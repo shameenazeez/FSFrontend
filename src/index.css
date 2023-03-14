@@ -1,13 +1,64 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.gradient-custom-3 {
+  /* fallback for old browsers */
+  background: #84fab0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.gradient-custom-4 {
+  /* fallback for old browsers */
+  background: #84fab0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+
+@media only screen and (max-width: 820px) {
+  .form {
+padding-right: 90px;
+ text-align: center;
+ margin: auto;
+
+
+
+  }
+}
+@media only screen and (max-width: 540px) {
+  .form {
+ text-align: center;
+ margin: auto ;
+ padding-right: -50px !important;
+
+
+
+  }
+}
+.loginlink{
+/* 
+  padding-bottom: 50px; */
+}
+.mainpage{
+background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+  min-height: 500px;
+  width:auto;
+}
+/* .navbar{
+  background-color: rgb(22, 85, 80)!important;
+  background-image: linear-gradient( rgb(22, 85, 80), rgb(159, 182, 180));
+} */
+
+.alertbox{
+  width: 400px;
+  height: auto;
+ 
+}
+.mr-1{
+  margin-right: 10px !important;
 }
