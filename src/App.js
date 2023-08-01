@@ -15,6 +15,7 @@ import Gotocart from './gotocart';
 const CustomerIdContext=createContext()
 function App() {
   const [ProductId,setProductId]=useState("12")
+  const [cart,setCart]=useState([])
   return (
     <div className="App">
       <CustomerIdContext.Provider value={[ProductId,setProductId]}>
@@ -23,7 +24,7 @@ function App() {
       <Route  path='/signup' element={<Signup/>}></Route>
       <Route  path='/login' element={<Login/>}></Route>
       <Route  path='/home' element={<Home/>}></Route>
-      <Route  path='/order/:id' element={<Order/>}></Route>
+      <Route  path='/order' element={<Order/>}></Route>
       <Route  path='/gotocart' element={<Gotocart/>}></Route>
      </Routes>
      </CustomerIdContext.Provider>

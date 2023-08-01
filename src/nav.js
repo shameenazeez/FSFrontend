@@ -14,34 +14,53 @@ function Navigation() {
   
   const[ProductId,setProductId]=useContext(CustomerIdContext)
   const[_id,setId]=useState("")
-  const[cart,setCart]=useState([])
-  const [Quantity, setQuantity]=useState(1)
+  const[cartTotal,setCartTotal]=useState("")
+  const [count, setCount]=useState(1)
+  const [show,setShow]=useState(true)
+  const [productExist,setProductExist]=useState(true)
+ 
 
   useEffect(() => {
     const user=JSON.parse(localStorage.getItem("user"))
-    console.log(user.userId)
-    setId(user.userId)
-    
+   // console.log(user.userId)
+    const cartTotal1=JSON.parse(localStorage.getItem("cartToatal"))
+        setCartTotal(cartTotal1)
 
-  })
-  axios.get('http://localhost:5000/api/getproduct').then((res)=>{
-    setProductdata(res.data)
- 
-    })
+    setId(user.userId)
+    axios.get('http://localhost:5000/api/getproduct').then((res)=>{
+      setProductdata(res.data)
   
-      const submit=(id)=>{
+      })
+    
+  },[])
+  // const getLocalStorage=()=>{
+  //   const cartData=localStorage.getItem("cartData")
+
+  // }
+  // useEffect(() => {
+ 
+ 
+
+        const submit=(id)=>{
         const ProductId=productdata[id]._id
         setProductId(ProductId)  
-        localStorage.setItem("cart",JSON.stringify(_id))
+        
+        setShow(false)
+        
       
-        axios.post('http://localhost:5000/api/createcart',{ProductId,_id,Quantity}).then((res)=>{
-
-       setCart(res.data);
-       localStorage.setItem("cartItemss",JSON.stringify(res.data))
-        })
-     
+      
+         axios.post('http://localhost:5000/api/createcart',{ProductId,count,_id})
+           
+         axios.post('http://localhost:5000/api/updatecarttotal',{cartTotal,_id})
+        
+      
       }
-console.log(cart)
+     
+   
+        
+    
+      
+
   return (
     <div>
 <Navbar collapseOnSelect expand="lg" variant="dark" className='gradient-custom-4 '>
@@ -58,15 +77,11 @@ console.log(cart)
               <NavDropdown.Item href='/login'>
                 Login
               </NavDropdown.Item>
-              {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
+            
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href='/gotocart'><ShoppingCartIcon/></Nav.Link>
+          <Nav.Link href='/gotocart'>   <ShoppingCartIcon/>   </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Dank memes
             </Nav.Link>
@@ -85,7 +100,7 @@ console.log(cart)
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Button variant="primary" onClick={()=>{
+      <Button variant="primary" onClick={()=>{
                                 
                                              submit(id)
                                             }}>Add to Cart</Button>
